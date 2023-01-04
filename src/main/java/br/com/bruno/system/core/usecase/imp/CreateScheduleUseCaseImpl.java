@@ -5,6 +5,7 @@ import br.com.bruno.system.core.domain.Schedule;
 import br.com.bruno.system.core.usecase.CreateScheduleUseCase;
 import lombok.RequiredArgsConstructor;
 
+
 @RequiredArgsConstructor
 public class CreateScheduleUseCaseImpl implements CreateScheduleUseCase {
 
