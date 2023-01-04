@@ -12,6 +12,5 @@ public interface AssocieteEntityMapper {
 
   AssociateEntity toAssociateEntity(final Associate associate);
 
-  Associate toAssociate(final AssociateEntity associateEntity);
 
 }

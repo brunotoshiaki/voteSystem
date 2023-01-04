@@ -4,6 +4,7 @@ import br.com.bruno.system.core.usecase.CreateAssocieteUseCase;
 import br.com.bruno.system.entrypoint.controller.AssocieteController;
 import br.com.bruno.system.entrypoint.controller.mapper.AssociateMapper;
 import br.com.bruno.system.entrypoint.controller.request.AssociateRequest;
+import br.com.bruno.system.entrypoint.controller.response.AssociateResponse;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +20,9 @@ public class AssocieteControllerImpl implements AssocieteController {
   private final CreateAssocieteUseCase createAssocieteUseCase;
 
   @Override
-  public ResponseEntity<Void> create(@Valid @RequestBody final AssociateRequest associate) {
-    createAssocieteUseCase.insert(AssociateMapper.INSTANCE.toAssociate(associate));
+  public ResponseEntity<AssociateResponse> create(@Valid @RequestBody final AssociateRequest associate) {
+    var response = createAssocieteUseCase.insert(AssociateMapper.INSTANCE.toAssociate(associate));
 
-    return ResponseEntity.ok().build();
+    return ResponseEntity.ok().body(response);
   }
 }
