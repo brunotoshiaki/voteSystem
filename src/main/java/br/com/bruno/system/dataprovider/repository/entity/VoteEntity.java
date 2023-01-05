@@ -17,15 +17,15 @@ public class VoteEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "associate_id", referencedColumnName = "id")
+  @JoinColumn(name = "associateId", referencedColumnName = "id")
   private AssociateEntity associate;
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "schedule_id", referencedColumnName = "id")
+  @JoinColumn(name = "scheduleId", referencedColumnName = "id")
   private ScheduleEntity schedule;
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "session_id", referencedColumnName = "id")
+  @JoinColumn(name = "sessionId", referencedColumnName = "id")
   private VotingSessionEntity votingSession;
 
   private byte vote;

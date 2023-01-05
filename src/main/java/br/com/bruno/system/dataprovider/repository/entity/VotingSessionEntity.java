@@ -8,11 +8,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import java.time.LocalDateTime;
+import lombok.Data;
 import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
 
 
 @Getter
+@Data
 @Entity(name = "session")
 public class VotingSessionEntity {
 
@@ -21,7 +23,7 @@ public class VotingSessionEntity {
   private Long id;
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "schedule_id", referencedColumnName = "id")
+  @JoinColumn(name = "scheduleId", referencedColumnName = "id")
   private ScheduleEntity schedule;
 
   private int operatingTime;
