@@ -13,6 +13,6 @@ public interface AssociateResponseMapper {
 
   AssociateResponse toAssociateResponse(final AssociateEntity entity);
 
-  List<AssociateResponse> toAssociatesResponse(final List<AssociateEntity> entity);
+  List<AssociateResponse> toAssociatesResponse(final List<AssociateEntity> entities);
 
 }
