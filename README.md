@@ -31,3 +31,15 @@ curl --location --request POST 'localhost:8080/api/v1/associate' \
     "name":"Carlos Antunes""
 }'
 ```
+
+## 2 - Listar todos associados
+
+Endpoint para realizar a listagem de todos os associados
+
+- PATH: **get /api/v1/associate**
+
+
+- Exemplo - curl
+```
+curl --location --request GET 'localhost:8080/api/v1/associate' \
+```
