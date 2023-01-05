@@ -1,4 +1,4 @@
-package br.com.bruno.system.dataprovider.mapper;
+package br.com.bruno.system.core.usecase.mapper;
 
 import br.com.bruno.system.dataprovider.repository.entity.ScheduleEntity;
 import br.com.bruno.system.entrypoint.controller.response.ScheduleResponse;
