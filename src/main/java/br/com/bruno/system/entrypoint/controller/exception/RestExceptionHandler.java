@@ -1,6 +1,7 @@
 package br.com.bruno.system.entrypoint.controller.exception;
 
 import br.com.bruno.system.dataprovider.exception.ObjectNotFoundException;
+import br.com.bruno.system.dataprovider.exception.ScheduleAlreadyCreatedExeption;
 import java.time.LocalDateTime;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -38,5 +39,11 @@ public class RestExceptionHandler {
   protected ResponseEntity<ErrorModel> handleObjectNotFoundException() {
     final var error = new ErrorModel(HttpStatus.NOT_FOUND.value(), LocalDateTime.now(), "Object Not Found");
     return ResponseEntity.status(HttpStatus.NOT_FOUND.value()).body(error);
+  }
+
+  @ExceptionHandler(ScheduleAlreadyCreatedExeption.class)
+  protected ResponseEntity<ErrorModel> handleScheduleAlreadyCreatedException() {
+    final var error = new ErrorModel(HttpStatus.FORBIDDEN.value(), LocalDateTime.now(), "Schedule Already Created");
+    return ResponseEntity.status(HttpStatus.FORBIDDEN.value()).body(error);
   }
 }

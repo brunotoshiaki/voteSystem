@@ -18,6 +18,5 @@ public class FindByIdScheduleUseCaseImpl implements FindByIdScheduleUseCase {
   public ScheduleResponse findById(final Long id) {
     final var result = this.findByIdSchedule.findById(id);
     return ScheduleResponseMapper.INSTANCE.toScheduleResponse(result);
-
   }
 }
