@@ -1,8 +1,9 @@
 package br.com.bruno.system.dataprovider.exception;
 
-import lombok.NoArgsConstructor;
+import lombok.Data;
 
-@NoArgsConstructor
+@Data
 public class ObjectNotFoundException extends RuntimeException {
+
 
 }
