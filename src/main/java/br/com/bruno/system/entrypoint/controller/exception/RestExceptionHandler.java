@@ -1,5 +1,6 @@
 package br.com.bruno.system.entrypoint.controller.exception;
 
+import br.com.bruno.system.dataprovider.exception.ObjectNotFoundException;
 import java.time.LocalDateTime;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -31,5 +32,11 @@ public class RestExceptionHandler {
     log.error(ex.getMessage());
     final var error = new ErrorModel(HttpStatus.BAD_REQUEST.value(), LocalDateTime.now(), "Required request body");
     return ResponseEntity.status(HttpStatus.BAD_REQUEST.value()).body(error);
+  }
+
+  @ExceptionHandler(ObjectNotFoundException.class)
+  protected ResponseEntity<ErrorModel> handleObjectNotFoundException() {
+    final var error = new ErrorModel(HttpStatus.NOT_FOUND.value(), LocalDateTime.now(), "Object Not Found");
+    return ResponseEntity.status(HttpStatus.NOT_FOUND.value()).body(error);
   }
 }
