@@ -26,8 +26,8 @@ public class VoteEntity {
 
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "sessionId", referencedColumnName = "id")
-  private VotingSessionEntity votingSession;
+  private SessionEntity votingSession;
 
-  private byte vote;
+  private boolean vote;
 
 }
