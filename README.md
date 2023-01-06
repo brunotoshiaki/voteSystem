@@ -105,14 +105,35 @@ curl --location --request POST 'localhost:8080/api/v1/session' \
 }'
 ```
 
-## 6 - Exibir resultado de uma votação
+## 6 - Vota
 
-Endpoint para realizar a listagem de todos os associados
+Endpoint para realizar a votacao
 
-- PATH: **get /api/v1/associate**
-
+- PATH: **get /api/v1/vote**
+- Body:
+  - **idAssociate=id value: {Int}**
+  - **idSchedule=id value: {Int}** 
+   - **vote=vote value: {Enum(SIM,NAO)}** 
 
 - Exemplo - curl
 ```
-curl --location --request GET 'localhost:8080/api/v1/associate' \
+curl --location --request POST 'localhost:8080/api/v1/vote' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "idAssociate": 1,
+  "idSchedule": 1,
+  "idSession": 1,
+  "vote": "SIM"
+}'
 ```
+
+
+## 7 - Exibir resultado de uma votação
+
+Endpoint para realizar a listagem de todos os associados
+
+- PATH: **get /api/v1/vote/{id}**
+
+
+- Exemplo - curl
+
