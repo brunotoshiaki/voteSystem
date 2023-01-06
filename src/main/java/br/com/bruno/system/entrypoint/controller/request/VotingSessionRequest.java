@@ -1,10 +1,13 @@
 package br.com.bruno.system.entrypoint.controller.request;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
-public record VotingSessionRequest(@NotNull(message = "The scheduleId is required") Long scheduleId, int operatingTime) {
+@Data
+public class VotingSessionRequest {
 
-  public VotingSessionRequest(Long scheduleId) {
-    this(scheduleId, 10);
-  }
+  @NotNull(message = "The scheduleId is required")
+  private Long scheduleId;
+  private int operatingTime = 1;
+
 }
