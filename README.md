@@ -11,7 +11,9 @@ Projeto para votação de associados
 
 # Execução
 
-mvn clean install
+```mvn clean install```
+```mvn spring-boot:run```
+
 
 # Endpoints
 
