@@ -16,7 +16,7 @@ import org.hibernate.annotations.CreationTimestamp;
 @Getter
 @Data
 @Entity(name = "session")
-public class VotingSessionEntity {
+public class SessionEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,12 +30,12 @@ public class VotingSessionEntity {
   @CreationTimestamp
   private LocalDateTime creationTime;
 
-  public VotingSessionEntity(ScheduleEntity schedule, int operatingTime) {
+  public SessionEntity(ScheduleEntity schedule, int operatingTime) {
     this.schedule = schedule;
     this.operatingTime = operatingTime;
   }
 
-  public VotingSessionEntity() {
+  public SessionEntity() {
 
   }
 }

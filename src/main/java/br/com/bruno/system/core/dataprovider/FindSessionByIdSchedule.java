@@ -1,10 +1,10 @@
 package br.com.bruno.system.core.dataprovider;
 
-import br.com.bruno.system.dataprovider.repository.entity.VotingSessionEntity;
+import br.com.bruno.system.dataprovider.repository.entity.SessionEntity;
 import java.util.Optional;
 
 public interface FindSessionByIdSchedule {
 
-  Optional<VotingSessionEntity> findByIdSchedule(final Long id);
+  Optional<SessionEntity> findByIdSchedule(final Long id);
 
 }

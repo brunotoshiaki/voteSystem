@@ -1,7 +1,7 @@
 package br.com.bruno.system.entrypoint.controller.mapper;
 
-import br.com.bruno.system.core.domain.VotingSession;
-import br.com.bruno.system.entrypoint.controller.request.VotingSessionRequest;
+import br.com.bruno.system.core.domain.Session;
+import br.com.bruno.system.entrypoint.controller.request.SessionRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -10,6 +10,6 @@ public interface SessionMapper {
 
   SessionMapper INSTANCE = Mappers.getMapper(SessionMapper.class);
 
-  VotingSession toVotingSession(final VotingSessionRequest request);
+  Session toSession(final SessionRequest request);
 
 }

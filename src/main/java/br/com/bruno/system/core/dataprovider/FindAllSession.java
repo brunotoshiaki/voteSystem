@@ -1,9 +1,9 @@
 package br.com.bruno.system.core.dataprovider;
 
-import br.com.bruno.system.dataprovider.repository.entity.VotingSessionEntity;
+import br.com.bruno.system.dataprovider.repository.entity.SessionEntity;
 import java.util.List;
 
 public interface FindAllSession {
 
-  List<VotingSessionEntity> execute();
+  List<SessionEntity> execute();
 }

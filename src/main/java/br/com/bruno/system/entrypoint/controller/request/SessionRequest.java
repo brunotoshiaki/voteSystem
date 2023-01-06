@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class VotingSessionRequest {
+public class SessionRequest {
 
   @NotNull(message = "The scheduleId is required")
   private Long scheduleId;

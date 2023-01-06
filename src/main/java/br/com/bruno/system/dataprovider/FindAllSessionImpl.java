@@ -1,8 +1,8 @@
 package br.com.bruno.system.dataprovider;
 
 import br.com.bruno.system.core.dataprovider.FindAllSession;
-import br.com.bruno.system.dataprovider.repository.VotingSessionRepository;
-import br.com.bruno.system.dataprovider.repository.entity.VotingSessionEntity;
+import br.com.bruno.system.dataprovider.repository.SessionRepository;
+import br.com.bruno.system.dataprovider.repository.entity.SessionEntity;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class FindAllSessionImpl implements FindAllSession {
 
-  private final VotingSessionRepository sessionRepository;
+  private final SessionRepository sessionRepository;
 
   @Override
-  public List<VotingSessionEntity> execute() {
+  public List<SessionEntity> execute() {
     return sessionRepository.findAll();
   }
 

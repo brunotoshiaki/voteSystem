@@ -1,8 +1,8 @@
 package br.com.bruno.system.dataprovider;
 
 import br.com.bruno.system.core.dataprovider.InsertSession;
-import br.com.bruno.system.dataprovider.repository.VotingSessionRepository;
-import br.com.bruno.system.dataprovider.repository.entity.VotingSessionEntity;
+import br.com.bruno.system.dataprovider.repository.SessionRepository;
+import br.com.bruno.system.dataprovider.repository.entity.SessionEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class InsertSessionImpl implements InsertSession {
 
-  private final VotingSessionRepository sessionRepository;
+  private final SessionRepository sessionRepository;
 
 
   @Override
-  public VotingSessionEntity execute(final VotingSessionEntity session) {
+  public SessionEntity execute(final SessionEntity session) {
     return this.sessionRepository.save(session);
   }
 }

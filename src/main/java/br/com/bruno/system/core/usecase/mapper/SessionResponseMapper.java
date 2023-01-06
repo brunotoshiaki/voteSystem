@@ -1,7 +1,7 @@
 package br.com.bruno.system.core.usecase.mapper;
 
-import br.com.bruno.system.dataprovider.repository.entity.VotingSessionEntity;
-import br.com.bruno.system.entrypoint.controller.response.VotingSessionResponse;
+import br.com.bruno.system.dataprovider.repository.entity.SessionEntity;
+import br.com.bruno.system.entrypoint.controller.response.SessionResponse;
 import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -13,9 +13,9 @@ public interface SessionResponseMapper {
   SessionResponseMapper INSTANCE = Mappers.getMapper(SessionResponseMapper.class);
 
   @Mapping(source = "creationTime", target = "dateVoting", dateFormat = "dd.MM.yyyy-HH:mm")
-  VotingSessionResponse toSessionResponse(final VotingSessionEntity entity);
+  SessionResponse toSessionResponse(final SessionEntity entity);
 
   @Mapping(source = "creationTime", target = "dateVoting", dateFormat = "dd.MM.yyyy-HH:mm")
-  List<VotingSessionResponse> toSessionsResponse(final List<VotingSessionEntity> entites);
+  List<SessionResponse> toSessionsResponse(final List<SessionEntity> entites);
 
 }

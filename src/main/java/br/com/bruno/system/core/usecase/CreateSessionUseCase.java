@@ -1,9 +1,9 @@
 package br.com.bruno.system.core.usecase;
 
-import br.com.bruno.system.core.domain.VotingSession;
-import br.com.bruno.system.entrypoint.controller.response.VotingSessionResponse;
+import br.com.bruno.system.core.domain.Session;
+import br.com.bruno.system.entrypoint.controller.response.SessionResponse;
 
 public interface CreateSessionUseCase {
 
-  VotingSessionResponse insert(final VotingSession session);
+  SessionResponse insert(final Session session);
 }
