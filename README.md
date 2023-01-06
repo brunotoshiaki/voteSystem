@@ -7,6 +7,11 @@ Projeto para votação de associados
 - [`Java 19`] - Java Development Kit 19
 - [`Spring boot 3.0`] - Framework base para a API
 - [`H2`] - Banco em mémoria
+- [`Maven`] - Ferramenta de automação de compilação
+
+# Execução
+
+mvn clean install
 
 # Endpoints
 
