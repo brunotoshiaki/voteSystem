@@ -23,14 +23,15 @@ public class SessionEntity {
   private Long id;
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "scheduleId", referencedColumnName = "id")
+  @JoinColumn(name = "idSchedule", referencedColumnName = "id")
   private ScheduleEntity schedule;
 
   private int operatingTime;
   @CreationTimestamp
+
   private LocalDateTime creationTime;
 
-  public SessionEntity(ScheduleEntity schedule, int operatingTime) {
+  public SessionEntity(final ScheduleEntity schedule, final int operatingTime) {
     this.schedule = schedule;
     this.operatingTime = operatingTime;
   }

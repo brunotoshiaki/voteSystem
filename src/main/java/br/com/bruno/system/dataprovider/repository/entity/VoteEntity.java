@@ -8,8 +8,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity(name = "vote")
+@NoArgsConstructor
 @Data
 public class VoteEntity {
 
@@ -17,17 +19,22 @@ public class VoteEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "associateId", referencedColumnName = "id")
+  @JoinColumn(name = "idAssociate", referencedColumnName = "id")
   private AssociateEntity associate;
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "scheduleId", referencedColumnName = "id")
+  @JoinColumn(name = "idSchedule", referencedColumnName = "id")
   private ScheduleEntity schedule;
-
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "sessionId", referencedColumnName = "id")
-  private SessionEntity votingSession;
-
+  @JoinColumn(name = "idSession", referencedColumnName = "id")
+  private SessionEntity session;
   private boolean vote;
+
+  public VoteEntity(AssociateEntity associate, ScheduleEntity schedule, SessionEntity session, boolean vote) {
+    this.associate = associate;
+    this.schedule = schedule;
+    this.session = session;
+    this.vote = vote;
+  }
 
 }

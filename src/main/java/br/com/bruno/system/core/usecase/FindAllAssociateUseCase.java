@@ -1,6 +1,6 @@
 package br.com.bruno.system.core.usecase;
 
-import br.com.bruno.system.entrypoint.controller.response.AssociateResponse;
+import br.com.bruno.system.controller.response.AssociateResponse;
 import java.util.List;
 
 public interface FindAllAssociateUseCase {

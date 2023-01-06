@@ -5,6 +5,6 @@ import java.util.Optional;
 
 public interface FindSessionByIdSchedule {
 
-  Optional<SessionEntity> findByIdSchedule(final Long id);
+  Optional<SessionEntity> execute(final Long id);
 
 }

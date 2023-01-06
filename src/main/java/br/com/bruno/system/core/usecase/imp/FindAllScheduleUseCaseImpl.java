@@ -1,9 +1,9 @@
 package br.com.bruno.system.core.usecase.imp;
 
+import br.com.bruno.system.controller.response.ScheduleResponse;
 import br.com.bruno.system.core.dataprovider.FindAllSchedule;
 import br.com.bruno.system.core.usecase.FindAllScheduleUseCase;
 import br.com.bruno.system.core.usecase.mapper.ScheduleResponseMapper;
-import br.com.bruno.system.entrypoint.controller.response.ScheduleResponse;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,10 +1,10 @@
 package br.com.bruno.system.core.usecase.imp;
 
+import br.com.bruno.system.controller.response.AssociateResponse;
 import br.com.bruno.system.core.dataprovider.InsertAssociate;
 import br.com.bruno.system.core.domain.Associate;
 import br.com.bruno.system.core.usecase.CreateAssocieteUseCase;
 import br.com.bruno.system.core.usecase.mapper.AssociateResponseMapper;
-import br.com.bruno.system.entrypoint.controller.response.AssociateResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

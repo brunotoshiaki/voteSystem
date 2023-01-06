@@ -1,5 +1,6 @@
 package br.com.bruno.system.core.usecase.imp;
 
+import br.com.bruno.system.controller.response.SessionResponse;
 import br.com.bruno.system.core.dataprovider.FindByIdSchedule;
 import br.com.bruno.system.core.dataprovider.FindSessionByIdSchedule;
 import br.com.bruno.system.core.dataprovider.InsertSession;
@@ -8,7 +9,6 @@ import br.com.bruno.system.core.usecase.CreateSessionUseCase;
 import br.com.bruno.system.core.usecase.mapper.SessionResponseMapper;
 import br.com.bruno.system.dataprovider.exception.ScheduleAlreadyCreatedExeption;
 import br.com.bruno.system.dataprovider.repository.entity.SessionEntity;
-import br.com.bruno.system.entrypoint.controller.response.SessionResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,9 +30,9 @@ public class CreateSessionUseCaseImpl implements CreateSessionUseCase {
   }
 
   private SessionEntity createSessionEntity(final Session session) {
-    final var shedule = this.findByIdSchedule.findById(session.scheduleId());
+    final var shedule = this.findByIdSchedule.execute(session.scheduleId());
 
-    if (findSessionByIdSchedule.findByIdSchedule(shedule.getId()).isPresent()) {
+    if (findSessionByIdSchedule.execute(shedule.getId()).isPresent()) {
       throw new ScheduleAlreadyCreatedExeption();
     }
 

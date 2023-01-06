@@ -1,7 +1,7 @@
 package br.com.bruno.system.core.usecase.mapper;
 
+import br.com.bruno.system.controller.response.AssociateResponse;
 import br.com.bruno.system.dataprovider.repository.entity.AssociateEntity;
-import br.com.bruno.system.entrypoint.controller.response.AssociateResponse;
 import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
