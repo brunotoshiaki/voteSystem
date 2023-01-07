@@ -4,8 +4,11 @@ import br.com.bruno.system.dataprovider.exception.AssocieteAlreadyVotedException
 import br.com.bruno.system.dataprovider.exception.ObjectNotFoundException;
 import br.com.bruno.system.dataprovider.exception.ScheduleAlreadyCreatedExeption;
 import br.com.bruno.system.dataprovider.exception.SessionAlredyCloseExeption;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -33,12 +36,14 @@ public class RestExceptionHandler {
   @ExceptionHandler(HttpMessageNotReadableException.class)
   protected ResponseEntity<ErrorModel> handleNotReadableException(final HttpMessageNotReadableException ex) {
     log.error(ex.getMessage());
-    final var error = new ErrorModel(HttpStatus.BAD_REQUEST.value(), LocalDateTime.now(), "Required request body");
+    final var errorDetails = this.getErrorDetails(ex);
+    final var error = new ErrorModel(HttpStatus.BAD_REQUEST.value(), LocalDateTime.now(),
+        StringUtils.isBlank(errorDetails) ? ex.getMessage() : errorDetails);
     return ResponseEntity.status(HttpStatus.BAD_REQUEST.value()).body(error);
   }
 
   @ExceptionHandler(ObjectNotFoundException.class)
-  protected ResponseEntity<ErrorModel> handleObjectNotFoundException(ObjectNotFoundException ex) {
+  protected ResponseEntity<ErrorModel> handleObjectNotFoundException(final ObjectNotFoundException ex) {
     log.error(ex.getMessage());
     final var error = new ErrorModel(HttpStatus.NOT_FOUND.value(), LocalDateTime.now(), ex.getMessage());
     return ResponseEntity.status(HttpStatus.NOT_FOUND.value()).body(error);
@@ -65,4 +70,11 @@ public class RestExceptionHandler {
     return ResponseEntity.status(HttpStatus.FORBIDDEN.value()).body(error);
   }
 
+  private String getErrorDetails(final HttpMessageNotReadableException ex) {
+    if ((ex.getCause() instanceof InvalidFormatException ifx) && (ifx.getTargetType() != null && ifx.getTargetType().isEnum())) {
+      return String.format("Invalid enum value: '%s' for the field: '%s'. The value must be one of: %s.",
+          ifx.getValue(), ifx.getPath().get(ifx.getPath().size() - 1).getFieldName(), Arrays.toString(ifx.getTargetType().getEnumConstants()));
+    }
+    return "";
+  }
 }
