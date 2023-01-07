@@ -1,9 +1,9 @@
 package br.com.bruno.system.core.usecase.imp;
 
+import br.com.bruno.system.core.dataprovider.DoesScheduleHasVote;
 import br.com.bruno.system.core.dataprovider.FindByIdAssociete;
 import br.com.bruno.system.core.dataprovider.FindByIdSchedule;
 import br.com.bruno.system.core.dataprovider.FindByIdSession;
-import br.com.bruno.system.core.dataprovider.FindVoteByIdScheduleAndIdAssociete;
 import br.com.bruno.system.core.dataprovider.InsertVote;
 import br.com.bruno.system.core.domain.Vote;
 import br.com.bruno.system.core.usecase.CreateVoteUseCase;
@@ -24,7 +24,7 @@ public class CreateVoteUseCaseImpl implements CreateVoteUseCase {
   private final FindByIdSchedule findByIdSchedule;
   private final FindByIdSession findByIdSession;
   private final FindByIdAssociete findByIdAssociete;
-  private final FindVoteByIdScheduleAndIdAssociete findVoteByIdScheduleAndIdAssociete;
+  private final DoesScheduleHasVote doesScheduleHasVote;
 
   @Override
   public void insert(final Vote vote) {
@@ -42,7 +42,7 @@ public class CreateVoteUseCaseImpl implements CreateVoteUseCase {
   }
 
   private void validateVote(final Vote vote) {
-    if (this.findVoteByIdScheduleAndIdAssociete.execute(vote.idSchedule(), vote.idAssociate()).isPresent()) {
+    if (this.doesScheduleHasVote.execute(vote.idSchedule(), vote.idAssociate())) {
       throw new AssocieteAlreadyVotedException();
     }
   }
