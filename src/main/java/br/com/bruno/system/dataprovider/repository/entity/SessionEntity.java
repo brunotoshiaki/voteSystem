@@ -25,18 +25,24 @@ public class SessionEntity {
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "idSchedule", referencedColumnName = "id")
   private ScheduleEntity schedule;
-
   private int operatingTime;
   @CreationTimestamp
-
   private LocalDateTime creationTime;
+
+
+  public SessionEntity(final int operatingTime, final LocalDateTime creationTime) {
+    this.operatingTime = operatingTime;
+    this.creationTime = creationTime;
+  }
+
+
+  public SessionEntity() {
+
+  }
 
   public SessionEntity(final ScheduleEntity schedule, final int operatingTime) {
     this.schedule = schedule;
     this.operatingTime = operatingTime;
   }
 
-  public SessionEntity() {
-
-  }
 }
