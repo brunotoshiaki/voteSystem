@@ -4,5 +4,5 @@ import br.com.bruno.system.dataprovider.repository.entity.VoteEntity;
 
 public interface InsertVote {
 
-  void execute(VoteEntity vote);
+  VoteEntity execute(VoteEntity vote);
 }

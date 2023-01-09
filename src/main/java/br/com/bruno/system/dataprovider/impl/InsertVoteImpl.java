@@ -13,7 +13,7 @@ public class InsertVoteImpl implements InsertVote {
   private final VoteRepository voteRepository;
 
   @Override
-  public void execute(final VoteEntity vote) {
-    this.voteRepository.save(vote);
+  public VoteEntity execute(final VoteEntity vote) {
+    return this.voteRepository.save(vote);
   }
 }

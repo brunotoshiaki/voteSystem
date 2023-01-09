@@ -1,11 +1,14 @@
-package br.com.bruno.system.core.usecase;
+package br.com.bruno.system.core.usecase.imp;
 
+import br.com.bruno.system.controller.response.VoteResponse;
 import br.com.bruno.system.core.dataprovider.FindByIdAssociete;
 import br.com.bruno.system.core.dataprovider.FindByIdSchedule;
 import br.com.bruno.system.core.dataprovider.FindByIdSession;
 import br.com.bruno.system.core.dataprovider.InsertVote;
 import br.com.bruno.system.core.domain.ValidVote;
 import br.com.bruno.system.core.domain.Vote;
+import br.com.bruno.system.core.usecase.CreateVoteUseCase;
+import br.com.bruno.system.core.usecase.mapper.VoteResponseMapper;
 import br.com.bruno.system.core.usecase.validation.AssocieteVoteValidation;
 import br.com.bruno.system.core.usecase.validation.SessionOpenValidation;
 import br.com.bruno.system.dataprovider.repository.entity.AssociateEntity;
@@ -31,9 +34,11 @@ public class CreateVoteUseCaseImpl implements CreateVoteUseCase {
 
 
   @Override
-  public void insert(final Vote vote) {
+  public VoteResponse insert(final Vote vote) {
     final var voteEntity = this.createVoteEntity(vote);
-    this.insertVote.execute(voteEntity);
+    var result = this.insertVote.execute(voteEntity);
+
+    return VoteResponseMapper.toVoteResponse(result);
   }
 
   private VoteEntity createVoteEntity(final Vote vote) {

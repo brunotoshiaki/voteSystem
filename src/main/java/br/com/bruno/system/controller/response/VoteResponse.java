@@ -1,5 +1,7 @@
 package br.com.bruno.system.controller.response;
 
-public record VoteResponse(int totalVotes, int totalVotesAgree, int totalVoteAgainst) {
+import br.com.bruno.system.core.domain.VoteAnswerEnum;
+
+public record VoteResponse(Long id, Long idSchedule, Long idSession, VoteAnswerEnum answerEnum) {
 
 }

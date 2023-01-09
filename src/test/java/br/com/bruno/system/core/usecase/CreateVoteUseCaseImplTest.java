@@ -15,6 +15,7 @@ import br.com.bruno.system.core.dataprovider.InsertVote;
 import br.com.bruno.system.core.domain.ValidVote;
 import br.com.bruno.system.core.domain.Vote;
 import br.com.bruno.system.core.domain.VoteAnswerEnum;
+import br.com.bruno.system.core.usecase.imp.CreateVoteUseCaseImpl;
 import br.com.bruno.system.core.usecase.validation.AssocieteVoteValidation;
 import br.com.bruno.system.core.usecase.validation.SessionOpenValidation;
 import br.com.bruno.system.dataprovider.exception.AssocieteAlreadyVotedException;
@@ -22,6 +23,7 @@ import br.com.bruno.system.dataprovider.exception.SessionAlredyCloseExeption;
 import br.com.bruno.system.dataprovider.repository.entity.AssociateEntity;
 import br.com.bruno.system.dataprovider.repository.entity.ScheduleEntity;
 import br.com.bruno.system.dataprovider.repository.entity.SessionEntity;
+import br.com.bruno.system.dataprovider.repository.entity.VoteEntity;
 import java.time.LocalDateTime;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -79,7 +81,7 @@ class CreateVoteUseCaseImplTest {
     when(this.findByIdSchedule.execute(any())).thenReturn(this.createSchedule());
     when(this.findByIdSession.execute(any())).thenReturn(this.createSession());
     doNothing().when(this.associeteVoteUseCase).setNextChain(any());
-    doNothing().when(this.insertVote).execute(any());
+    when(this.insertVote.execute(any())).thenReturn(createVoteEntity());
   }
 
 
@@ -108,4 +110,7 @@ class CreateVoteUseCaseImplTest {
     return new ValidVote(1L, 1L, LocalDateTime.now(), LocalDateTime.now(), 10);
   }
 
+  private VoteEntity createVoteEntity() {
+    return new VoteEntity(createAssociate(), createSchedule(), createSession(), Boolean.TRUE);
+  }
 }

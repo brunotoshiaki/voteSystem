@@ -5,13 +5,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity(name = "associate")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
+@Data
 public class AssociateEntity {
 
   @Id
