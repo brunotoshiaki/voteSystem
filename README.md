@@ -143,4 +143,7 @@ Endpoint para realizar a listagem de todos os associados
 
 
 - Exemplo - curl
+curl --location --request GET 'localhost:8080/api/v1/vote/1'
 
+## 8 - Exibir todas as votações
+curl --location --request GET 'localhost:8080/api/v1/vote'
