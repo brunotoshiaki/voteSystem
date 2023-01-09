@@ -9,5 +9,6 @@ public interface VoteRepository extends JpaRepository<VoteEntity, Long> {
 
   Optional<VoteEntity> findVoteEntityByScheduleIdAndAssociateId(final Long idSchedule, final Long idAssociete);
 
-  List<VoteEntity> findVoteEntityByVote(final boolean vote);
+  List<VoteEntity> findVoteEntityBySessionId(final long id);
+
 }

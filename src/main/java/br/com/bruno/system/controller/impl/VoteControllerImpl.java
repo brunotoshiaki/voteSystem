@@ -6,6 +6,9 @@ import br.com.bruno.system.controller.request.VoteRequest;
 import br.com.bruno.system.controller.response.VoteResponse;
 import br.com.bruno.system.controller.response.VoteResult;
 import br.com.bruno.system.core.usecase.CreateVoteUseCase;
+import br.com.bruno.system.core.usecase.FindAllVoteUseCase;
+import br.com.bruno.system.core.usecase.SumVoteUseCase;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,23 +18,27 @@ import org.springframework.web.bind.annotation.RestController;
 public class VoteControllerImpl implements VoteController {
 
   private final CreateVoteUseCase createVoteUseCase;
+  private final FindAllVoteUseCase findAllVoteUseCase;
+
+  private final SumVoteUseCase sumVoteUseCase;
+
 
   @Override
   public ResponseEntity<VoteResponse> vote(final VoteRequest request) {
-
     final var response = this.createVoteUseCase.insert(VoteMapper.INSTANCE.toVote(request));
-
     return ResponseEntity.ok().body(response);
   }
 
   @Override
-  public ResponseEntity<VoteResponse> getallVotes() {
-    return null;
+  public ResponseEntity<List<VoteResponse>> findAll() {
+    final var response = this.findAllVoteUseCase.findAll();
+    return ResponseEntity.ok().body(response);
   }
 
   @Override
   public ResponseEntity<VoteResult> getResult(final Long id) {
-    return null;
+    final var response = this.sumVoteUseCase.sum(id);
+    return ResponseEntity.ok().body(response);
   }
 
 
